@@ -32,7 +32,7 @@ Z = np.random.randn(M, N)
 increments = (mu - 0.5 * sigma**2) * dt + sigma * np.sqrt(dt) * Z
 log_paths = np.cumsum(increments, axis=1)
 S = S0 * np.exp(np.column_stack([np.zeros(M), log_paths]))
-
+final_prices = S[:, -1]
 expected_final = np.mean(final_prices)
 ci_95 = np.percentile(final_prices, [2.5, 97.5])
 
